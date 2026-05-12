@@ -10,9 +10,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "firebase": "^10.13.2",
-    "firebase-admin": "^12.5.0",
-    "next": "14.2.13",
+    "firebase": "^12.13.0",
+    "firebase-admin": "^13.9.0",
+    "next": "^9.3.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
@@ -22,7 +22,7 @@
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.20",
     "eslint": "^8.57.0",
-    "eslint-config-next": "14.2.13",
+    "eslint-config-next": "^16.2.6",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.12",
     "typescript": "^5.6.2"
