@@ -21,6 +21,11 @@ sdist/
 var/
 wheels/
 share/python-wheels/
+
+# Re-include the Next.js scaffold's lib/ source directory, which is
+# otherwise swallowed by the Python `lib/` ignore above.
+!lib/
+!lib/**
 *.egg-info/
 .installed.cfg
 *.egg

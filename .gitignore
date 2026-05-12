@@ -21,6 +21,11 @@ sdist/
 var/
 wheels/
 share/python-wheels/
+
+# Re-include the Next.js scaffold's lib/ directory, which would otherwise
+# match the Python `lib/` ignore above.
+!.claude/worktrees/festive-brahmagupta-8b759a/lib/
+!.claude/worktrees/festive-brahmagupta-8b759a/lib/**
 *.egg-info/
 .installed.cfg
 *.egg
