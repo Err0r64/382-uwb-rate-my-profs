@@ -1,0 +1,11 @@
+# Netlify deployment config for Rate My Husky.
+# The Netlify Next.js Runtime auto-detects the Next.js app and wires up
+# server functions for API routes. Set NEXT_PUBLIC_* and FIREBASE_ADMIN_*
+# environment variables in the Netlify site dashboard, not in this file.
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
