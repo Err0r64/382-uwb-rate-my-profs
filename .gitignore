@@ -22,10 +22,10 @@ var/
 wheels/
 share/python-wheels/
 
-# Re-include the Next.js scaffold's lib/ directory, which would otherwise
-# match the Python `lib/` ignore above.
-!.claude/worktrees/festive-brahmagupta-8b759a/lib/
-!.claude/worktrees/festive-brahmagupta-8b759a/lib/**
+# Re-include the Next.js scaffold's lib/ source directory, which is
+# otherwise swallowed by the Python `lib/` ignore above.
+!lib/
+!lib/**
 *.egg-info/
 .installed.cfg
 *.egg
@@ -221,3 +221,48 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# =====================================================================
+# Node / Next.js
+# =====================================================================
+
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# Next.js build output
+.next/
+out/
+next-env.d.ts.bak
+
+# Production build artifacts
+build/
+dist/
+
+# Local env files (keep .env.local.example, ignore the rest)
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# TypeScript build cache
+*.tsbuildinfo
+
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/
+
+# Netlify
+.netlify/
+
+# Claude Code worktrees (scratch space — never commit)
+.claude/worktrees/
