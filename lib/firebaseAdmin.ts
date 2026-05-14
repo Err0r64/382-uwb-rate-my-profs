@@ -10,7 +10,7 @@ import { getFirestore, type Firestore } from "firebase-admin/firestore";
 const ADMIN_APP_NAME = "rate-my-husky-admin";
 
 function loadAdminCredentials() {
-  const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
+  const projectId = process.env.FIREBASE_ADMIN_PROJECT_ID;
   const clientEmail = process.env.FIREBASE_ADMIN_CLIENT_EMAIL;
   const rawKey = process.env.FIREBASE_ADMIN_PRIVATE_KEY;
 
