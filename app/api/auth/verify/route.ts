@@ -30,7 +30,10 @@ export async function POST(req: NextRequest) {
   try {
     // checkRevoked=true so a forcibly signed-out user can't replay an old token.
     decoded = await adminAuth.verifyIdToken(idToken, true);
-  } catch {
+  } catch (err) {
+    // Log the real reason to the server console so devs can diagnose. The
+    // client still gets a generic 401 — don't leak internals over the wire.
+    console.error("[/api/auth/verify] verifyIdToken failed:", err);
     return NextResponse.json(
       { error: "Invalid or expired ID token3." },
       { status: 401 },
@@ -44,8 +47,9 @@ export async function POST(req: NextRequest) {
     // Best-effort: revoke refresh tokens so the client can't keep using this session.
     try {
       await adminAuth.revokeRefreshTokens(decoded.uid);
-    } catch {
+    } catch (err) {
       // ignore — surface the rejection regardless
+      console.error(`[/api/auth/verify] Failed to revoke tokens for uid ${decoded.uid}:`, err);
     }
     return NextResponse.json(
       { error: DOMAIN_REJECTION_MESSAGE },
@@ -61,6 +65,10 @@ export async function POST(req: NextRequest) {
       photoURL: decoded.picture ?? null,
     });
   } catch (err) {
+    console.error(
+      `[/api/auth/verify] upsertUserOnSignIn failed for uid ${decoded.uid}:`,
+      err,
+    );
     const message =
       err instanceof Error ? err.message : "Failed to persist user.";
     return NextResponse.json({ error: message }, { status: 500 });
