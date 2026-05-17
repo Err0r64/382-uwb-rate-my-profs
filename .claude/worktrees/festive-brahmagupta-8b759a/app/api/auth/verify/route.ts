@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
     decoded = await adminAuth.verifyIdToken(idToken, true);
   } catch {
     return NextResponse.json(
-      { error: "Invalid or expired ID token." },
+      { error: "Invalid or expired ID token3." },
       { status: 401 },
     );
   }
